@@ -17,13 +17,29 @@ describe("getting, adding, and deleting products", () => {
     expect(response.data.name).toEqual("lemon");
     productID = response.data.id;
   });
+
+  test("add a product", async () => {
+    // create a product
+    const newProduct = {
+      name: "apple",
+      price: 0.75,
+    };
+    // add the product
+    const response = await axios.post(`${baseURL}/api/products`, newProduct);
+    // we expect the response to be 200 and contain our product
+    expect(response.status).toBe(200);
+    expect(response.data.name).toEqual("apple");
+    productID = response.data.id;
+  });
+
   test("get product", async () => {
     // get one product
     const response = await axios.get(`${baseURL}/api/products/${productID}`);
     // we expect the response to be 200 and contain our pdouct
     expect(response.status).toBe(200);
-    expect(response.data.name).toEqual("lemon");
+    expect(response.data.name).toEqual("apple");
   });
+
   test("get products", async () => {
     // get all products
     const response = await axios.get(`${baseURL}/api/products`);
@@ -35,6 +51,7 @@ describe("getting, adding, and deleting products", () => {
     // we expect the product ID to be the one we added
     expect(foundProduct.id).toEqual(productID);
   });
+
   test("delete a product", async () => {
     const response = await axios.delete(`${baseURL}/api/products/${productID}`);
     expect(response.status).toBe(200);
