@@ -96,7 +96,7 @@ function App() {
     } catch (error) {
       setError("error retrieving products: " + error);
     }
-    targetURL = "api/cart/" + id;
+    targetURL = "/api/cart/" + id;
     try {
       await axios.post(targetURL);
     } catch (error) {
