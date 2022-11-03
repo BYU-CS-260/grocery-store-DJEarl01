@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 let productItems = [];
 let cartItems = [];
 
-for(let i = 0; i < defaultProducts.length; i++) {
+for (let i = 0; i < defaultProducts.length; i++) {
     const id = crypto.randomUUID();
     let newItem = {
         id: id,
@@ -44,8 +44,8 @@ app.post('/api/products', (req, res) => {
 });
 
 app.get('/api/products', (req, res) => {
-    console.log("Returned All Products");
     res.send(productItems);
+    console.log("Returned All Products");
 });
 
 app.get('/api/products/:id', (req, res) => {

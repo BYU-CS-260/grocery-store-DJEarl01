@@ -1,5 +1,15 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.ProductList {
+  width: 400px;
+}
+
+.CartList {
+  width: 400px;
 }
 
 .App-logo {
